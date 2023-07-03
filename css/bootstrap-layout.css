@@ -1,0 +1,51 @@
+/* 排版、格式 */
+:root {
+    --primary-bg-color: blue;
+    --white-bg-color: white;
+    --gray-bg-color: gray;
+}
+
+/* .app {
+    width: 100%;
+    height: 100vh;
+} */
+
+.header-container {
+    /* background-color: var(--primary-bg-color); */
+    width: 100%;
+    height: calc(var(--calc-vh, 1vh) * 10);
+}
+
+.header {
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    display: block;
+    width: 10rem;
+    border-radius: 1rem;
+}
+
+.main-container {
+    background-color: var(--white-bg-color);
+    width: 100%;
+    min-height: calc(var(--calc-vh, 1vh) * 75);
+    height: fit-content;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+.footer-container {
+    background-color: var(--gray-bg-color);
+    width: 100%;
+    height: calc(var(--calc-vh, 1vh) * 15);
+}
+
+.footer {
+    width: 100%;
+    height: 100%;
+}

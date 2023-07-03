@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
+    <!-- <link href="/css/bootstrap.css">
+    <link href="/css/bootstrap-layout.css"> -->
+    <!--jquery 一定要在最上面-->
+    <script src="./jquery/jquery.min.js" defer></script>
+    <!--下方其他一組一組放-->
+    <script src="./js/Homes.js" defer></script>
+    <script src="./js/functions/HomesFunction.js" defer></script>
+    <title>Homes</title>
+    <style>
+        .house p {
+            display: inline-table;
+        }
+
+        .search {
+            height: 30px;
+        }
+
+        .house-facilities {
+            display: inline-table;
+        }
+
+        .public-facilitie {
+            display: inline-table;
+        }
+
+        .contract time {
+            display: inline-table;
+        }
+
+        .monthly {
+            display: inline-table;
+        }
+
+        .monthly p {
+            display: inline-table;
+        }
+
+        .rent-payment-method {
+            display: inline-table;
+        }
+
+        .rent-payment-method p {
+            display: inline-table;
+        }
+
+        .Lessors-and-managers p {
+            display: inline-table;
+        }
+
+        .house-owner p {
+            display: inline-table;
+        }
+
+        .tenants-and-tenants-emergency-ontacts p {
+            display: inline-table;
+        }
+
+        .joint-guarantor p {
+            display: inline-table;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="color: rgb(128, 199, 226);margin: 2px;">Homes</h1>
+
+    <!-- <form>
+        <div align="center">
+            <input type="search" id="mySearch" name="q" type="text" autocomplete="off" placeholder="建築検索" size="60"
+                class="search" />
+            <button>検索</button>
+        </div>
+    </form> -->
+
+    <!--action：輸入方法的路徑，想讓此表單提交到哪裡的路徑。method：後端Controller 使用@PostMapping："POST"; @GetMapping："GET"-->
+    <form autocomplete="off" action="" method="POST">
+        <hr>
+        <h2>（1）賃貸借の目的物
+        </h2>
+        </hr>
+
+        <div class="house" id="house">
+            <ul style="list-style: none;">
+                <li>
+                    <span>名称&ensp;<input type="text" id="house_name" style="width:300px" />&thinsp;</span>
+                    <p>棟&emsp;<input type="text" id="house_stairs" style="width:30px" />
+                        &ensp;階&emsp;<input type="text" id="house_room" style="width:40px" />&ensp;号室</p>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>所在地</span>
+                    <p>住居表示&ensp;<input type="text" id="house_address" style="width:430px" /><br>
+                        登記簿&emsp;&ensp;<input type="text" id="house_registry" style="width:430px" /></p>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>種類</span>&emsp;
+                    <!--id屬性為分配一個唯一標識符。-->
+
+                    <input type="radio" id="house_types_1" name="house_types" value="マンション">
+                    <label for="house_types_1" id="house_types_label_1">マンション</label>&emsp;
+                    <input type="radio" id="house_types_2" name="house_types" value="アパート">
+                    <label for="house_types_2" id="house_types_label_2">アパート</label>&emsp;
+                    <input type="radio" id="house_types_3" name="house_types" value="戸建">
+                    <label for="house_types_3" id="house_types_label_3">戸建</label>&emsp;
+                    <input type="radio" id="house_types_4" name="house_types" value="テラスハウス">
+                    <label for="house_types_4" id="house_types_label_4">テラスハウス</label>&emsp;
+                    <input type="radio" id="house_types_5" name="house_types" value="その他">
+                    <label for="house_types_5" id="house_types_label_5">その他</label>&thinsp;
+                    <input type="text" id="house_types_other" style="width:120px" />&emsp;
+
+                    <!-- <label for="house_types_5" id="house_types_label_5">その他</label>&emsp;
+                    <input type="radio" id="house_types_4" name="house_types_radio" value="houseTypes5">
+                     -->
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>構造&nbsp;<input type="text" id="house_structure" style="width: 300px" /></span>&emsp;
+                    <span>戸数</span>
+                    <span><input type="text" id="house_households" style="width:40px" />&nbsp;戸</span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>建築時期</span>
+                    <!--建築時期(新築年號)-->
+                    <span>&ensp;<input type="text" id="house_completion_reign_title" style="width: 100px"
+                            placeholder="令和/平成/昭和" /></span>&ensp;
+                    <!--建築時期(新築：年、月)-->
+                    <input type="month" id="house_completion_time">
+                    <!-- <input type="string" id="bookdate" placeholder="yyyy-MM"> -->
+                    <span>新築</span>
+                    <!--&nbsp;空格標籤-->
+                    <span>（大規模修繕を&nbsp;<span>&thinsp;<input type="text" id="house_construction_reign_title"
+                                style="width: 100px" placeholder="令和/平成/昭和" /></span>&ensp;<input type="text"
+                            id="house_construction_time" style="width:60px" />
+                        年実施）</span>
+                    <!--checked 可以將該 checkbox / radio 的初始狀態設定為已選取。-->
+                    <input type="checkbox" id="house_construction_time_checkbox"> 不詳
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>住戸番号</span>
+                    <span>&thinsp;<input type="text" id="house_room_number" style="width:30px" />&thinsp;号室</span>
+                    &emsp;<span>間取り</span>
+                    <span>&thinsp;<input type="text" id="house_room_layout" style="width:300px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>床面積</span>
+                    <span>&thinsp;<input type="text" id="house_floor_space" style="width:75px" />&thinsp;㎡</span>
+                    <span>&thinsp;（左記以外に、バルコニー&thinsp;<input type="text" id="house_balcony_area"
+                            style="width:75px" />&thinsp;㎡&thinsp;）&thinsp;</span>
+                </li>
+            </ul>
+        </div>
+
+        <br>
+        <h3 style="margin-left:40px;">住戸部分の設備等</h3>
+
+        <div class="house-facilities">
+            <ul style="list-style: none;">
+                <li>
+                    <span>電気</span>&emsp;
+                    <!-- <label for="without-1">無</label> -->
+                    <input type="radio" id="without-1" name="electricity_without_with" value="false">
+                    <label for="without-1">無</label>
+                    <input type="radio" id="with-1" name="electricity_without_with" value="true">
+                    <label for="with-1">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <span><input type="text" id="electricity_format_ampere" style="width:40px" />&ensp;アンペア</span>&emsp;
+                    <span>メーター：</span>
+
+                    <input type="checkbox" id="electricity_format_meter_1" value="專用"> 専用&ensp;
+                    <input type="checkbox" id="electricity_format_meter_2" value="子メーター"> 子メーター&ensp;
+                    <input type="checkbox" id="electricity_format_meter_3" value="割当"> 割当&emsp;
+                    &emsp;<span>備考&ensp;<input type="text" id="electricity_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>ガス</span>&emsp;
+                    <input type="radio" id="without-2" name="gas_without_with" value="false">
+                    <label for="without-2">無</label>
+                    <input type="radio" id="with-2" name="gas_without_with" value="true">
+                    <label for="with-2">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="checkbox" id="gas_format_1" value="都市ガス"> 都市ガス&ensp;
+                    <input type="checkbox" id="gas_format_2" value="プロパンガス"> プロパンガス&emsp;
+
+                    <span>メーター：</span>
+
+                    <input type="checkbox" id="gas_format_meter_1" value="専用"> 専用&emsp;
+                    <input type="checkbox" id="gas_format_meter_2" value="子メーター"> 子メーター&emsp;
+                    <input type="checkbox" id="gas_format_meter_3" value="割当"> 割当&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="gas_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>コンロ</span>&emsp;
+                    <input type="radio" id="without-3" name="stove_without_with" value="false">
+                    <label for="without-3">無</label>
+                    <input type="radio" id="with-3" name="stove_without_with" value="true">
+                    <label for="with-3">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="checkbox" id="stove_format_1" value="ガス"> ガス&emsp;
+                    <input type="checkbox" id="stove_format_2" value="電気"> 電気&emsp;
+                    <input type="checkbox" id="stove_format_3" value="IH調理器"> IH調理器&emsp;
+                    &emsp;<span>備考&ensp;<input type="text" id="stove_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>上水道</span>&emsp;
+                    <input type="radio" id="without-4" name="aqueduct_without_with" value="false">
+                    <label for="without-4">無</label>
+                    <input type="radio" id="with-4" name="aqueduct_without_with" value="true">
+                    <label for="with-4">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="checkbox" id="aqueduct_format_1" value="水道本管より直結"> 水道本管より直結&emsp;
+                    <input type="checkbox" id="aqueduct_format_2" value="受水槽"> 受水槽&emsp;
+                    <input type="checkbox" id="aqueduct_format_3" value="井戸水"> 井戸水&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="aqueduct_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>下水道</span>&emsp;
+                    <input type="radio" id="without-5" name="sewerage_without_with" value="false">
+                    <label for="without-5">無</label>
+                    <input type="radio" id="with-5" name="sewerage_without_with" value="true">
+                    <label for="with-5">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="checkbox" id="sewerage_format_1" value="公共下水道"> 公共下水道&emsp;
+                    <input type="checkbox" id="sewerage_format_2" value="浄化槽"> 浄化槽&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="sewerage_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>台所</span>&emsp;
+                    <input type="radio" id="without-6" name="counter_without_with" value="false">
+                    <label for="without-6">無</label>
+                    <input type="radio" id="with-6" name="counter_without_with" value="true">
+                    <label for="with-6">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="checkbox" id="counter_format_1" value="オーブン"> オーブン&emsp;
+                    <input type="checkbox" id="counter_format_2" value="食器棚"> 食器棚&emsp;
+                    <input type="checkbox" id="counter_format_3" value="換気扇"> 換気扇&emsp;
+                    <input type="checkbox" id="counter_format_4" value="レンジフード"> レンジフード&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="counter_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>トイレ</span>&emsp;
+                    <input type="radio" id="without-7" name="toilet_without_with" value="false">
+                    <label for="without-7">無</label>
+                    <input type="radio" id="with-7" name="toilet_without_with" value="true">
+                    <label for="with-7">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="radio" id="toilet-1-1" name="toilet_format_1" value="専用">
+                    <label for="toilet-1-1" id="toilet_label_1">専用</label>
+                    <input type="radio" id="toilet-1-2" name="toilet_format_1" value="共用">
+                    <label for="toilet-1-2" id="toilet_label_2">共用</label>&ensp;
+
+                    <span>・</span>&ensp;
+
+                    <input type="radio" id="toilet-2-1" name="toilet_format_2" value="水洗">
+                    <label for="toilet-2-1" id="toilet_label_3">水洗</label>
+                    <input type="radio" id="toilet-2-2" name="toilet_format_2" value="汲取式">
+                    <label for="toilet-2-2" id="toilet_label_4">汲取式</label>&emsp;
+
+                    <span>浴室と</span>
+
+                    <input type="radio" id="toilet-3-1" name="toilet_format_3" value="一体">
+                    <label for="toilet-3-1" id="toilet_label_5">一体</label>
+                    <input type="radio" id="toilet-3-2" name="toilet_format_3" value="別">
+                    <label for="toilet-3-2" id="toilet_label_6">別</label>&ensp;
+
+                    <span>・</span>&ensp;
+
+                    <input type="checkbox" id="toilet_format_4" value="洗浄便座"> 洗浄便座&emsp;
+                    <input type="checkbox" id="toilet_format_5" value="暖房便座"> 暖房便座&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="toilet_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>浴室</span>&emsp;
+                    <input type="radio" id="without-8" name="bathroom_without_with" value="false">
+                    <label for="without-8">無</label>
+                    <input type="radio" id="with-8" name="bathroom_without_with" value="true">
+                    <label for="with-8">有</label>&emsp;
+
+                    <span>型式・内容等</span>&emsp;
+
+                    <span>シャワー</span>&thinsp;
+                    <input type="radio" id="no" name="bathroom_format_shower_without_with" value="無">
+                    <label for="no" id="bathroom_format_shower_without">無</label>
+                    <input type="radio" id="yes" name="bathroom_format_shower_without_with" value="有">
+                    <label for="yes" id="bathroom_format_shower_with">有</label>&emsp;
+
+                    <input type="checkbox" id="bathroom_format_other" value="その他"> その他&ensp;<input type="text"
+                        id="bathroom_shower_other" style="width:120px" />&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="bathroom_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>洗面台</span>&emsp;
+                    <input type="radio" id="without-9" name="sink_without_with" value="false">
+                    <label for="without-9">無</label>
+                    <input type="radio" id="with-9" name="sink_without_with" value="true">
+                    <label for="with-9">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="checkbox" id="sink_format_1" value="鏡"> 鏡&emsp;
+                    <input type="checkbox" id="sink_format_2" value="コンセント"> コンセント&emsp;
+                    <input type="checkbox" id="sink_format_3" value="シャワー"> シャワー&emsp;
+                    <input type="checkbox" id="sink_format_4_other" value="その他"> その他&ensp;<input type="text"
+                        id="sink_other" style="width:120px" />&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="sink_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>洗濯機置場</span>&emsp;
+                    <input type="radio" id="without-10" name="washing_machine_place_without_with" value="false">
+                    <label for="without-10">無</label>
+                    <input type="radio" id="with-10" name="washing_machine_place_without_with" value="true">
+                    <label for="with-10">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="radio" id="washing_machine_place_1-1" name="washing_machine_place_format" value="室内">
+                    <label for="washing_machine_place-1-1" id="washing_machine_place_label_1-1">室内</label>
+                    <input type="radio" id="washing_machine_place_1-2" name="washing_machine_place_format"
+                        value="バルコニー">
+                    <label for="washing_machine_place-1-2" id="washing_machine_place_label_1-2">バルコニー</label>
+                    <input type="radio" id="washing_machine_place_1-3" name="washing_machine_place_format" value="廊下">
+                    <label for="washing_machine_place-1-3" id="washing_machine_place_label_1-3">廊下</label>
+
+                    <span>・&ensp;洗濯機パン</span>&ensp;
+
+                    <input type="radio" id="washing_machine_place_2-1" name="washing_machine_pan_without_with"
+                        value="無">
+                    <label for="washing_machine_place_2-1" id="washing_machine_place_label_2-1">無</label>
+                    <input type="radio" id="washing_machine_place-2-2" name="washing_machine_pan_without_with"
+                        value="有">
+                    <label for="washing_machine_place_2-2" id="washing_machine_place_label_2-2">有</label>&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="washing_machine_place_note"
+                            style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>給湯設備</span>&emsp;
+                    <input type="radio" id="without-11" name="water_heater_without_with" value="false">
+                    <label for="without-11">無</label>
+                    <input type="radio" id="with-11" name="water_heater_without_with" value="true">
+                    <label for="with-11">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <span>給湯器</span>
+                    <span>(</span>
+                    <input type="radio" id="gas-3" name="water_heater" value="ガス">
+                    <label for="gas-3" id="water_heater_gas_label">ガス</label>
+                    <input type="radio" id="electricity-2" name="water_heater" value="電気">
+                    <label for="electricity-2" id="water_heater_electricity_label">電気</label>&thinsp;
+                    <span>)</span>
+
+                    <span>&emsp;給湯箇所</span>&ensp;
+
+                    <input type="checkbox" id="water_heater_format_1" value="台所"> 台所&emsp;
+                    <input type="checkbox" id="water_heater_format_2" value="浴室"> 浴室&emsp;
+                    <input type="checkbox" id="water_heater_format_3" value="洗面所"> 洗面所&emsp;
+                    <input type="checkbox" id="water_heater_format_4" value="洗濯"> 洗濯&emsp;
+                    <input type="checkbox" id="water_heater_format_5_other" value="その他"> その他&ensp;<input type="text"
+                        id="hot_water_point_other" style="width:120px" />&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="water_heater_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>冷暖房設備</span>&emsp;
+                    <input type="radio" id="without-12" name="air_conditioner_without_with" value="false">
+                    <label for="without-12">無</label>
+                    <input type="radio" id="with-12" name="air_conditioner_without_with" value="true">
+                    <label for="with-12">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <span>&ensp;エアコン</span>&ensp;
+                    <span>&thinsp;(&thinsp;<input type="text" id="air_conditioner"
+                            style="width:30px" />&ensp;台)</span>&emsp;
+
+                    <span>配管スリーブ</span>&ensp;
+
+                    <input type="radio" id="plumbing_sleeve_1" name="air_conditioner_plumbing_sleeve_without_with"
+                        value="無">
+                    <label for="plumbing_sleeve_1" id="air_conditioner_plumbing_sleeve_without">無</label>
+                    <input type="radio" id="plumbing_sleeve_2" name="air_conditioner_plumbing_sleeve_without_with"
+                        value="有">
+                    <label for="plumbing_sleeve_2" id="air_conditioner_plumbing_sleeve_with">有</label>&emsp;
+
+                    <input type="checkbox" id="air_conditioner_format_1" value="セントラルヒーティング"> セントラルヒーティング&emsp;
+                    <input type="checkbox" id="air_conditioner_format_2_other" value="その他"> その他&ensp;<input type="text"
+                        id="air_conditioner_other" style="width:120px" />&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="air_conditioning_equipment_note"
+                            style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>照明器具</span>&emsp;
+                    <input type="radio" id="without-13" name="light_without_with" value="false">
+                    <label for="without-13">無</label>
+                    <input type="radio" id="with-13" name="light_without_with" value="true">
+                    <label for="with-13">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="light_format" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="light_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>備付家具</span>&emsp;
+                    <input type="radio" id="without-14" name="furniture_without_with" value="false">
+                    <label for="without-14">無</label>
+                    <input type="radio" id="with-14" name="furniture_without_with" value="true">
+                    <label for="with-14">有</label>&emsp;
+
+                    <span>型式・内容等</span>&ensp;
+
+                    <input type="checkbox" id="furniture_format_1" value="下駄箱"> 下駄箱&emsp;
+                    <input type="checkbox" id="furniture_format_2" value="クローゼット"> クローゼット&emsp;
+                    <input type="checkbox" id="furniture_format_3" value="冷蔵庫"> 冷蔵庫&emsp;
+                    <input type="checkbox" id="furniture_format_4_other" value="その他"> その他&ensp;<input type="text"
+                        id="furniture_other" style="width:120px" />&emsp;
+
+                    &emsp;<span>備考&ensp;<input type="text" id="furniture_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>地デジ対応</span>&emsp;
+                    <input type="radio" id="without-15" name="tv_without_with" value="false">
+                    <label for="without-15">無</label>
+                    <input type="radio" id="with-15" name="tv_without_with" value="true">
+                    <label for="with-15">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="tv_format" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="tv_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>CATV対応</span>&emsp;
+                    <input type="radio" id="without-16" name="catv_without_with" value="false">
+                    <label for="without-16">無</label>
+                    <input type="radio" id="with-16" name="catv_without_with" value="true">
+                    <label for="with-16">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="catv_format" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="catv_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>インターネット</span>&emsp;
+                    <input type="radio" id="without-17" name="internet_without_with" value="false">
+                    <label for="without-17">無</label>
+                    <input type="radio" id="with-17" name="internet_without_with" value="true">
+                    <label for="with-17">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="internet_format" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="internet_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>トランクルーム</span>&emsp;
+                    <input type="radio" id="without-18" name="storehouse_without_with" value="false">
+                    <label for="without-18">無</label>
+                    <input type="radio" id="with-18" name="storehouse_without_with" value="true">
+                    <label for="with-18">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="storehouse_format" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="storehouse_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>専用庭</span>&emsp;
+                    <input type="radio" id="without-19" name="patio_without_with" value="false">
+                    <label for="without-19">無</label>
+                    <input type="radio" id="with-19" name="patio_without_with" value="true">
+                    <label for="with-19">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="patio_format" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="patio_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>ルーフバルコニー</span>&emsp;
+                    <input type="radio" id="without-20" name="roof_balcony_without_with" value="false">
+                    <label for="without-20">無</label>
+                    <input type="radio" id="with-20" name="roof_balcony_without_with" value="true">
+                    <label for="with-20">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="roof_balcony_format" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="roof_balcony_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>鍵</span>&emsp;
+                    <input type="radio" id="without-21" name="key_without_with" value="false">
+                    <label for="without-21">無</label>
+                    <input type="radio" id="with-21" name="key_without_with" value="true">
+                    <label for="with-21">有</label>&emsp;
+
+                    <span>鍵番号&ensp;<input type="text" id="key_number" style="width: 200px" /></span>
+                    <span>・&ensp;<input type="text" id="more_key" style="width: 40px" />&ensp;本</span>&emsp;
+                    <span>備考&ensp;<input type="text" id="key_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>&ensp;<input type="text" id="house_facilities_1" style="width: 200px"
+                            placeholder="住戸部分の設備等" /></span>
+                    <input type="radio" id="without-22" name="house_facilities_1_without_with" value="false">
+                    <label for="without-22">無</label>
+                    <input type="radio" id="with-22" name="house_facilities_1_without_with" value="true">
+                    <label for="with-22">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="house_facilities_1_format"
+                            style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="house_facilities_1_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>&ensp;<input type="text" id="house_facilities_2" style="width: 200px"
+                            placeholder="住戸部分の設備等" /></span>
+                    <input type="radio" id="without-23" name="house_facilities_2_without_with" value="false">
+                    <label for="without-23">無</label>
+                    <input type="radio" id="with-23" name="house_facilities_2_without_with" value="true">
+                    <label for="with-23">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="house_facilities_2_format"
+                            style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="house_facilities_2_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>&ensp;<input type="text" id="house_facilities_3" style="width: 200px"
+                            placeholder="住戸部分の設備等" /></span>
+                    <input type="radio" id="without-24" name="house_facilities_3_without_with" value="false">
+                    <label for="without-24">無</label>
+                    <input type="radio" id="with-24" name="house_facilities_3_without_with" value="true">
+                    <label for="with-24">有</label>&emsp;
+
+                    <span>型式・内容等&ensp;<input type="text" id="house_facilities_3_format"
+                            style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="house_facilities_3_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+        </div>
+
+        <br>
+        <h3 style="margin-left:40px;">共用部分の設備・施設等</h3>
+
+        <div class="public-facilitie">
+            <ul style="list-style: none;">
+                <li>
+                    <span>エレベーター</span>&emsp;
+                    <input type="radio" id="without-25" name="lift_without_with" value="false">
+                    <label for="without-25">無</label>
+                    <input type="radio" id="with-25" name="lift_without_with" value="true">
+                    <label for="with-25">有</label>&emsp;
+
+                    <span>利用の可否・内容等&ensp;<input type="text" id="lift_rent_state"
+                            style="width: 45px" />&ensp;基</span>&ensp;
+                    <span>備考&ensp;<input type="text" id="lift_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>オートロック</span>&emsp;
+                    <input type="radio" id="without-26" name="electronic_lock_without_with" value="false">
+                    <label for="without-26">無</label>
+                    <input type="radio" id="with-26" name="electronic_lock_without_with" value="true">
+                    <label for="with-26">有</label>&emsp;
+
+                    <span>利用の可否・内容等&ensp;<input type="text" id="electronic_lock_rent_state"
+                            style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="electronic_lock_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>メールボックス</span>&emsp;
+                    <input type="radio" id="without-27" name="mailbox_without_with" value="false">
+                    <label for="without-27">無</label>
+                    <input type="radio" id="with-27" name="mailbox_without_with" value="true">
+                    <label for="with-27">有</label>&emsp;
+
+                    <span>利用の可否・内容等&ensp;<input type="text" id="mailbox_rent_state" style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="mailbox_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>宅配ボックス</span>&emsp;
+                    <input type="radio" id="without-28" name="delivery_box_without_with" value="false">
+                    <label for="without-28">無</label>
+                    <input type="radio" id="with-28" name="delivery_box_without_with" value="true">
+                    <label for="with-28">有</label>&emsp;
+
+                    <span>利用の可否・内容等&ensp;<input type="text" id="delivery_box_rent_state"
+                            style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="delivery_box_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>トランクルーム</span>&emsp;
+                    <input type="radio" id="without-29" name="trunk_room_without_with" value="false">
+                    <label for="without-29">無</label>
+                    <input type="radio" id="with-29" name="trunk_room_without_with" value="true">
+                    <label for="with-29">有</label>&emsp;
+
+                    <span>利用&thinsp;<input type="radio" id="have-1" name="trunk_room_have_or_havent" value="可">
+                        <label for="have-1">可&ensp;</label>(&ensp;月額&thinsp;<span>&ensp;<input type="text"
+                                id="trunk_room_money" style="width: 200px" />&thinsp;円)
+                        </span></span>&ensp;
+
+                    <input type="radio" id="dont-have-1" name="trunk_room_have_or_havent" value="不可">
+                    <label for="dont-have-1">不可</label>&emsp;
+                    <span>備考&ensp;<input type="text" id="trunk_room_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>駐車場</span>&emsp;
+                    <input type="radio" id="without-30" name="parking_garage_without_with" value="false">
+                    <label for="without-30">無</label>
+                    <input type="radio" id="with-30" name="parking_garage_without_with" value="true">
+                    <label for="with-30">有</label>&emsp;
+
+                    <span>利用&thinsp;<input type="radio" id="have-2" name="parking_garage_have_or_havent" value="可">
+                        <label for="have-2">可&ensp;</label>(&ensp;月額&thinsp;<span>&ensp;<input type="text"
+                                id="parking_garage_money" style="width: 200px" />&thinsp;円)
+                        </span></span>&ensp;
+
+                    <input type="radio" id="dont-have-2" name="parking_garage_have_or_havent" value="不可">
+                    <label for="dont-have-2">不可</label>&emsp;
+                    <span>備考&ensp;<input type="text" id="parking_garage_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>駐輪場</span>&emsp;
+                    <input type="radio" id="without-31" name="bicycle_parking_without_with" value="false">
+                    <label for="without-31">無</label>
+                    <input type="radio" id="with-31" name="bicycle_parking_without_with" value="true">
+                    <label for="with-31">有</label>&emsp;
+
+                    <span>利用&thinsp;<input type="radio" id="have-3" name="bicycle_parking_have_or_havent" value="可">
+                        <label for="have-3">可&ensp;</label>(&ensp;月額&thinsp;<span>&ensp;<input type="text"
+                                id="bicycle_parking_money" style="width: 200px" />&thinsp;円)
+                        </span></span>&ensp;
+
+                    <input type="radio" id="dont-have-3" name="bicycle_parking_have_or_havent" value="不可">
+                    <label for="dont-have-3">不可</label>&emsp;
+                    <span>備考&ensp;<input type="text" id="bicycle_parking_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>バイク置場</span>&emsp;
+                    <input type="radio" id="without-32" name="scooter_parking_without_with" value="false">
+                    <label for="without-32">無</label>
+                    <input type="radio" id="with-32" name="scooter_parking_without_with" value="true">
+                    <label for="with-32">有</label>&emsp;
+
+                    <span>利用&thinsp;<input type="radio" id="have-4" name="scooter_parking_have_or_havent" value="可">
+                        <label for="have-4">可&ensp;</label>(&ensp;月額&thinsp;<span>&ensp;<input type="text"
+                                id="scooter_parking_money" style="width: 200px" />&thinsp;円)
+                        </span></span>&ensp;
+
+                    <input type="radio" id="dont-have-4" name="scooter_parking_have_or_havent" value="DONT-HAVE-4">
+                    <label for="dont-have-4">不可</label>&emsp;
+                    <span>備考&ensp;<input type="text" id="scooter_parking_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>&ensp;<input type="text" id="public_facilities_1" style="width: 200px"
+                            placeholder="共用部分の設備・施設等 " /></span>
+                    <input type="radio" id="without-33" name="public_facilities_1_without_with" value="false">
+                    <label for="without-33">無</label>
+                    <input type="radio" id="with-33" name="public_facilities_1_without_with" value="true">
+                    <label for="with-33">有</label>&emsp;
+
+                    <span>利用の可否・内容等&ensp;<input type="text" id="public_facilities_1_rent_state"
+                            style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="public_facilities_1_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>&ensp;<input type="text" id="public_facilities_2" style="width: 200px"
+                            placeholder="共用部分の設備・施設等 " /></span>
+                    <input type="radio" id="without-34" name="public_facilities_2_without_with" value="false">
+                    <label for="without-34">無</label>
+                    <input type="radio" id="with-34" name="public_facilities_2_without_with" value="true">
+                    <label for="with-34">有</label>&emsp;
+
+                    <span>利用の可否・内容等&ensp;<input type="text" id="public_facilities_2_rent_state"
+                            style="width: 300px" /></span>&ensp;
+                    <span>備考&ensp;<input type="text" id="public_facilities_2_note" style="width: 200px" /></span>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <!--共用部分の設備・施設等3 備考-->
+                <li>
+                    <span>&ensp;<input type="text" id="public_facilities_note"
+                            style="width: 1000px;height: 80px" /></span>
+                </li>
+            </ul>
+        </div>
+
+        <h2>（2）契約期間</h2>
+
+        <div class="contract time">
+            <ul style="list-style: none;">
+                <li>
+                    <span>始期</span>&ensp;
+                    <label for="date-1"></label>
+                    <input type="date" id="contract_start_time">&emsp;
+                    <span>終期</span>&ensp;
+                    <label for="date-2"></label>
+                    <input type="date" id="contract_end_time">&emsp;
+
+                    <span>契約期間</span>&ensp;
+                    &ensp;<input type="text" id="contract_time" style="width: 120px" placeholder=" ○○年　○○月" />
+
+                    &emsp;
+
+                    <span>目的物件の引渡日</span>&ensp;
+                    <label for="date-4"></label>
+                    <input type="date" id="delivery_date_of_contract_time_object" placeholder="2014-09-18">
+                </li>
+            </ul>
+        </div>
+
+        <h2>（3）賃料等</h2>
+
+        <div class="monthly">
+            <ul style="list-style: none;">
+                <li>
+                    <span>賃料・共益費（管理費）</span>&emsp;
+
+                    <p>賃料&emsp;月額&ensp;<input type="text" id="monthly" style="width:80px" />&ensp;円&emsp;
+                        支払期限&ensp;<input type="text" id="rent_payment_deadline_month" style="width: 120px"
+                            placeholder="翌月分を/当月分を" />&ensp;毎月&ensp;<input type="text" id="rent_payment_deadline_date"
+                            style="width:80px" />&thinsp;日までに支払う&ensp;
+                        <br>
+                        共益費（管理費）&emsp;月額&ensp;<input type="text" id="administration_fee"
+                            style="width:80px" />&ensp;円&emsp;
+                        支払期限&ensp;<input type="text" id="administration_fee_month" style="width: 120px"
+                            placeholder="翌月分を/当月分を" />&ensp;毎月&ensp;<input type="text" id="administration_fee_date"
+                            style="width:80px" />&thinsp;日までに支払う&ensp;
+                    </p>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>敷金（保証金）&ensp;<span>賃料の&ensp;</span><input type="text" id="security_deposit_month"
+                            style="width: 50px" />&thinsp;ヶ月相当分</span>&thinsp;
+                    <span> <input type="text" id="security_deposit_date" style="width: 80px" />&thinsp;円&ensp;
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>駐車場使用料</span>&thinsp;
+                    <input type="text" id="parking_fee" style="width: 80px" />&thinsp;円&emsp;
+                    <input type="text" id="parking_fee_note" style="width: 200px" />&thinsp;
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>附属施設使用料</span>&thinsp;
+                    <input type="text" id="ancillary_facility_fee" style="width: 80px" />&thinsp;円&emsp;
+                    <input type="text" id="ancillary_facility_fee_note" style="width: 200px" />&thinsp;
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>礼金</span>
+                    <input type="text" id="cash_gift" style="width: 80px" />&thinsp;円&emsp;
+                    <input type="text" id="cash_gift_note" style="width: 200px" />&thinsp;
+                </li>
+            </ul>
+
+            <ul class="rent-payment-method" style="list-style: none;">
+                <li>
+                    <span>賃料等の支払方法</span>&emsp;
+
+                    <p><input type="text" id="monthly_payment_method" style="width: 120px"
+                            placeholder="振込/口座振替/持参" />&emsp;<input type="checkbox"
+                            id="monthly_payment_method_other">その他&nbsp;<input type="text"
+                            id="monthly_payment_method_other_text" style="width:120px" />&emsp;
+                        <br>
+                        振込先金融機関名・支店名&ensp;<input type="text" id="beneficiary_bank_and_branch_name"
+                            style="width:400px" />&emsp;口座種別&ensp;<input type="text" id="account_type"
+                            style="width: 90px" placeholder="普通/貯蓄/当座" />
+
+                        <br>
+                        口座番号&ensp;<input type="text" id="account_number"
+                            style="width:100px" />&emsp;口座名義人・フリガナ&ensp;<input type="text" id="account_holder"
+                            style="width: 120px" />
+
+                        <br>
+                        振込手数料負担者&ensp;<input type="text" id="transfer_fee_bearer" style="width: 60px"
+                            placeholder="借主/賃主" />&emsp;持参先&ensp;<input type="text" id="bearer_address"
+                            style="width: 400px" />
+
+                        <br>
+                        貸与する鍵と本数</span>&emsp;鍵番号①&ensp;<input type="text" id="keys_lend_and_number_1"
+                            style="width: 100px" />&thinsp;本&emsp;鍵番号②&ensp;<input type="text"
+                            id="keys_lend_and_number_2" style="width: 100px" />&thinsp;本&emsp;鍵番号③&ensp;<input
+                            type="text" id="keys_lend_and_number_3" style="width: 100px" />&thinsp;本
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <h2>（4）貸主および管理業者</h2>
+
+        <div>
+            <ul class="Lessors-and-managers" style="list-style: none;">
+                <li>
+                    <span>貸主</span>&emsp;
+                    <p>
+                        氏名&ensp;<input type="text" id="landlord_name" style="width: 60px" />&emsp;電話&ensp;<input
+                            type="text" id="landlord_phone" style="width: 150px" />
+
+                        <br>
+                        住所&ensp;<input type="text" id="landlord_address" style="width: 300px" />&emsp;
+                    </p>
+                </li>
+
+                <li>
+                    <span>管理業者</span>&emsp;
+
+                    <p>
+                        商号または名称&ensp;<input type="text" id="real_estate_agency_name"
+                            style="width: 280px" />&emsp;電話&ensp;<input type="text" id="real_estate_agency_phone"
+                            style="width: 150px" />
+
+                        <br>
+                        所在地&ensp;<input type="text" id="real_estate_agency_address" style="width: 300px" />&emsp;
+                    </p>
+                </li>
+
+                <li>
+                    <span>賃貸住宅管理業者登録制度登録番号</span>&emsp;国土交通大臣&ensp;<input type="text" id="registration_system"
+                        style="width: 60px" placeholder="(1) ~ (20)" />&emsp;第&ensp;<input type="text"
+                        id="registration_number" style="width: 100px" />&thinsp;号
+                </li>
+
+                <li>
+                    <span>管理担当者</span>&emsp;氏名&ensp;<input type="text" id="administrant_name"
+                        style="width: 60px" />&ensp;
+                </li>
+                <br>
+                <span>※貸主と建物の所有者が異なる場合は、次の欄も記載すること</span>
+            </ul>
+
+            <ul class="house-owner" style="list-style: none;">
+                <li>
+                    <span>建物の所有者</span>
+                    <p>住所</span>&ensp;<input type="text" id="house_owner_address" style="width: 400px" />&ensp;
+                        <br>
+                        <span>氏名</span>&ensp;<input type="text" id="house_owner_name" style="width: 400px" />&ensp;
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <h2>（5）借主および入居人、緊急連絡先</h2>
+
+        <div>
+            <ul class="tenants-and-tenants-emergency-ontacts" style="list-style: none;">
+                <li>
+                    <span>借主氏名&ensp;<input type="text" id="tenant_name"
+                            style="width: 400px" />&emsp;</span>&emsp;年齢&ensp;<input type="text" id="tenant_age"
+                        style="width: 30px" />&ensp;歳&ensp;
+                </li>
+
+                <li>
+                    <span>入居者名&thinsp;1&ensp;<input type="text" id="resident_name_1"
+                            style="width: 100px" />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_1"
+                        style="width: 30px" />&ensp;
+                </li>
+
+                <li>
+                    <span>入居者名&thinsp;2&ensp;<input type="text" id="resident_name_2"
+                            style="width: 100px" />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_2"
+                        style="width: 30px" />&ensp;
+                </li>
+
+                <li>
+                    <span>入居者名&thinsp;3&ensp;<input type="text" id="resident_name_3"
+                            style="width: 100px" />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_3"
+                        style="width: 30px" />&ensp;
+                </li>
+
+                <li>
+                    <span>入居者名&thinsp;4&ensp;<input type="text" id="resident_name_4"
+                            style="width: 100px" />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_4"
+                        style="width: 30px" />&ensp;
+                </li>
+
+                <li>
+                    <span>入居者名&thinsp;5&ensp;<input type="text" id="resident_name_5"
+                            style="width: 100px" />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_5"
+                        style="width: 30px" />&ensp;
+                </li>
+
+                <li>
+                    <span>入居者名&thinsp;6&ensp;<input type="text" id="resident_name_6"
+                            style="width: 100px" />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_6"
+                        style="width: 30px" />&ensp;
+                </li>
+
+                <li>
+                    <span>緊急連絡先</span>&emsp;
+                    <p>氏名&ensp;<input type="text" id="emergency_contact_name"
+                            style="width: 130px" />&emsp;借主との関係&ensp;<input type="text"
+                            id="emergency_contact_relationship_with_borrowers" style="width: 130px" />&ensp;
+                        <br>
+
+                        住所&ensp;<input type="text" id="emergency_contact_address" style="width: 280px" />&emsp;電話
+                        &ensp;<input type="text" id="emergency_contact_address_phone" style="width: 180px" />&ensp;
+
+                        <br>
+
+                        勤務先&ensp;<input type="text" id="emergency_contact_workplace" style="width: 280px" />&emsp;電話
+                        &ensp;<input type="text" id="emergency_contact_workplace_work_phone"
+                            style="width: 180px" />&ensp;
+
+                        <br>
+
+                        携帯&ensp;<input type="text" id="emergency_contact_mobile_number" style="width: 180px" />&emsp;
+
+                    </p>
+                </li>
+            </ul>
+
+            <h2>（6）連帯保証の極度額</h2>
+
+            <div>
+                <ul style="list-style: none;">
+                    <li>
+                        <span>極度額</span>&ensp;<input type="text" id="maximum_amount"
+                            style="width: 100px" />&ensp;円&emsp;
+                        <span>本契約は連帯保証人が法人のため極度額は定めません</span>&ensp;
+                    </li>
+                </ul>
+            </div>
+
+            <h2>
+                （7）更新料に関する事項&emsp;更新料の有無
+                <span>&thinsp;(</span>
+                <input type="radio" id="without-35" name="renewal_amount_without_with" value="false">
+                <label for="without-35">無</label>
+                <input type="radio" id="with-35" name="renewal_amount_without_with" value="true">
+                <label for="with-36">有</label>&thinsp;)&emsp;
+            </h2>
+
+
+            <div>
+                <ul style="list-style: none;">
+                    <li>
+                        <span>更新料の金額</span>&emsp;<input type="checkbox" id="renewal_amount_month_checkbox" value="新賃料の">
+                        新賃料の&ensp;<input type="text" id="renewal_amount_month" style="width:120px" />&ensp;ヶ月分
+
+                        </span>&emsp;<input type="checkbox" id="renewal_amount_date_checkbox" value="yen">
+                        <input type="text" id="renewal_amount_date" style="width:120px" />&thinsp;円&emsp;
+
+                    </li>
+
+                    <li>
+                        <br>
+                        <input type="text" id="renewal_amount_without_note" style="width:600px; height: 100px">
+                    </li>
+
+                    <br>
+                    <li>
+                        <span>特約条項</span>
+                        <br>
+                        <input type="text" id="special_terms" style="width:600px; height: 600px">
+
+                    </li>
+                </ul>
+
+                <div>
+                    <ul style="list-style: none;">
+                        <li>
+                            <span>下記貸主と借主は、本物件について賃貸借契約を締結し、また貸主と連帯保証人は、借主の<br>
+
+                                債務について連帯保証契約を締結したことを証するため、本契約書3通を作成し、貸主、借主、<br>
+
+                                および連帯保証人署（記）名押印の上、各自その1通を保有します。<br>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <ul style="list-style: none;">
+                        <li>
+                            <input type="date" id="joint_guarantee_contract_date">
+                        </li>
+
+                        <li class="joint-guarantor">
+                            <span>貸主</span>&emsp;
+                            <p>住所&ensp;<input type="text" id="landlord_address_2" style="width: 330px" />&emsp;
+
+                                <br>
+                                氏名&ensp;<input type="text" id="landlord_name_2"
+                                    style="width: 110px" />&emsp;電話番号&ensp;<input type="text" id="landlord_phone_2"
+                                    style="width: 124px" />&ensp;
+
+                            </p>
+                        </li>
+                        <li class="joint-guarantor">
+                            <span>借主</span>&emsp;
+                            <p>住所&ensp;<input type="text" id="tenant_address" style="width: 330px" />&emsp;
+
+                                <br>
+                                氏名&ensp;<input type="text" id="tenant_name_2"
+                                    style="width: 110px" />&emsp;電話番号&ensp;<input type="text" id="tenant_phone"
+                                    style="width: 124px" />&ensp;
+                            </p>
+                        </li>
+
+                        <li class="joint-guarantor">
+                            <span>連帯保証人</span>&emsp;
+                            <p>住所&ensp;<input type="text" id="joint_guarantor_address" style="width: 330px" />&emsp;
+
+                                <br>
+                                氏名&ensp;<input type="text" id="joint_guarantor_name"
+                                    style="width: 110px" />&emsp;電話番号&ensp;<input type="text" id="joint_guarantor_phone"
+                                    style="width: 124px" />&ensp;
+                            </p>
+                        </li>
+
+                        極度額&ensp;<input type="text" id="maximum_amount_2"
+                            style="width: 133px" />&thinsp;円&emsp;※連帯保証人が法人の場合には極度額は定めません
+
+                    </ul>
+                </div>
+            </div>
+    </form>
+
+    <input type="button" id="btn" value="提出">
+    <!-- <button id="btn">送出 </button> -->
+</body>
+
+</html>

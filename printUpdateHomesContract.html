@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="./jquery/jquery.min.js" defer></script>
+    <script src="./js/Homes.js" defer></script>
+    <script src="./js/functions/HomesFunction.js" defer></script>
+    <script src="./infoUpdate.js" defer></script>
+    <script src="./infoFunctionUpdate.js" defer></script>
+
+    <!--租屋契約更新 有readonly-->
+
+    <title> Print Update Homes Contract</title>
+    <style>
+        .house p {
+            display: inline-table;
+        }
+
+        .contract time {
+            display: inline-table;
+        }
+
+        .monthly {
+            display: inline-table;
+        }
+
+        .monthly p {
+            display: inline-table;
+        }
+
+        .rent-payment-method {
+            display: inline-table;
+        }
+
+        .rent-payment-method p {
+            display: inline-table;
+        }
+
+        .tenants-and-tenants-emergency-ontacts p {
+            display: inline-table;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="infoContractHistoryUpdate">
+
+        <h2>（1）賃貸借の目的物
+        </h2>
+
+
+        <div class="house">
+            <ul style="list-style: none;">
+                <li>
+                    <span>名称&ensp;<input type="text" id="house_name" style="width:300px" readonly />&thinsp;</span>
+                    <p>棟&emsp;<input type="text" id="house_room" style="width:40px" readonly />&ensp;号室</p>
+                </li>
+            </ul>
+
+            <ul style="list-style: none;">
+                <li>
+                    <span>所在地</span>
+                    <p>住居表示&ensp;<input type="text" id="house_address" style="width:430px" readonly />
+                </li>
+            </ul>
+
+            <h2>（2）契約期間</h2>
+
+            <div class="contract time">
+                <ul style="list-style: none;">
+                    <li>
+                        <span>始期</span>&ensp;
+                        <label for="date-1"></label>
+                        <input type="date" id="contract_start_time" disabled>&emsp;
+                        <span>終期</span>&ensp;
+                        <label for="date-2"></label>
+                        <input type="date" id="contract_end_time" disabled>&emsp;
+
+                        <span>契約期間</span>&ensp;
+                        &ensp;<input type="text" id="contract_time" style="width: 120px" placeholder=" ○○年　○○月"
+                            readonly />
+
+                        &emsp;
+
+                        <span>目的物件の引渡日</span>&ensp;
+                        <label for="date-4"></label>
+                        <input type="date" id="delivery_date_of_contract_time_object" disabled>
+                    </li>
+                </ul>
+            </div>
+
+            <h2>（3）賃料等</h2>
+
+            <div class="monthly">
+                <ul style="list-style: none;">
+                    <li>
+                        <span>賃料 ・共益費（管理費）</span>&emsp;
+
+                        <p>賃料&emsp;月額&ensp;<input type="text" id="monthly" style="width:80px" readonly />&ensp;円&emsp;
+                            支払期限&ensp;<input type="text" id="rent_payment_deadline_month" style="width: 120px"
+                                placeholder="翌月分を/当月分を" readonly />&ensp;毎月&ensp;<input type="text"
+                                id="rent_payment_deadline_date" style="width:80px" readonly />&thinsp;日までに支払う&ensp;
+                            <br>
+                            共益費（管理費）&emsp;月額&ensp;<input type="text" id="administration_fee" style="width:80px"
+                                readonly />&ensp;円&emsp;
+                            支払期限&ensp;<input type="text" id="administration_fee_month" style="width: 120px"
+                                placeholder="翌月分を/当月分を" readonly />&ensp;毎月&ensp;<input type="text"
+                                id="administration_fee_date" style="width:80px" readonly />&thinsp;日までに支払う&ensp;
+                        </p>
+                    </li>
+                </ul>
+
+                <ul style="list-style: none;">
+                    <li>
+
+                    </li>
+                </ul>
+
+                <ul style="list-style: none;">
+                    <li>
+                        <span>敷金（保証金）&ensp;<span>賃料の&ensp;</span><input type="text" id="security_deposit_month"
+                                style="width: 50px" readonly />&thinsp;ヶ月相当分</span>&thinsp;
+                        <span></span><input type="text" id="security_deposit_date" style="width: 80px"
+                            readonly />&thinsp;円<span>&ensp;</span>&ensp;<span>
+                    </li>
+                </ul>
+
+                <ul style="list-style: none;">
+                    <li>
+                        <span>駐車場使用料</span>&thinsp;
+                        </span><input type="text" id="parking_fee" style="width: 80px" readonly />&thinsp;円&emsp;
+                        </span><input type="text" id="parking_fee_note" style="width: 200px" readonly />&thinsp;
+                    </li>
+                </ul>
+
+                <ul style="list-style: none;">
+                    <li>
+                        <span>附属施設使用料</span>&thinsp;
+                        </span><input type="text" id="ancillary_facility_fee" style="width: 80px"
+                            readonly />&thinsp;円&emsp;
+                        </span><input type="text" id="ancillary_facility_fee_note" style="width: 200px"
+                            readonly />&thinsp;
+                    </li>
+                </ul>
+
+                <ul style="list-style: none;">
+                    <li>
+                        <span>礼金</span>
+                        </span><input type="text" id="cash_gift" style="width: 80px" readonly />&thinsp;円&emsp;
+                        </span><input type="text" id="cash_gift_note" style="width: 200px" readonly />&thinsp;
+                    </li>
+                </ul>
+
+                <ul class="rent-payment-method" style="list-style: none;">
+                    <li>
+                        <span>賃料等の支払方法</span>&emsp;
+
+                        <p><input type="text" id="monthly_payment_method" style="width: 120px" placeholder="振込/口座振替/持参"
+                                readonly />&emsp;<input type="checkbox" id="monthly_payment_method_other"
+                                disabled>その他&nbsp;<input type="text" id="monthly_payment_method_other_text"
+                                style="width:120px" readonly />&emsp;
+                            <br>
+                            振込先金融機関名・支店名&ensp;<input type="text" id="beneficiary_bank_and_branch_name"
+                                style="width:400px" readonly />&emsp;口座種別&ensp;<input type="text" id="account_type"
+                                style="width: 90px" placeholder="普通/貯蓄/当座" readonly />
+
+                            <br>
+                            口座番号&ensp;<input type="text" id="account_number" style="width:100px"
+                                readonly />&emsp;口座名義人・フリガナ&ensp;<input type="text" id="account_holder"
+                                style="width: 120px" readonly />
+
+                            <br>
+                            振込手数料負担者&ensp;<input type="text" id="transfer_fee_bearer" style="width: 60px"
+                                placeholder="借主/賃主" readonly />&emsp;持参先&ensp;<input type="text" id="bearer_address"
+                                style="width: 400px" readonly />
+
+                            <br>
+                            貸与する鍵と本数</span>&emsp;鍵番号①&ensp;<input type="text" id="keys_lend_and_number_1"
+                                style="width: 100px" readonly />&thinsp;本&emsp;鍵番号②&ensp;<input type="text"
+                                id="keys_lend_and_number_2" style="width: 100px"
+                                readonly />&thinsp;本&emsp;鍵番号③&ensp;<input type="text" id="keys_lend_and_number_3"
+                                style="width: 100px" readonly />&thinsp;本
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <h2>（4）借主および入居人、緊急連絡先</h2>
+
+            <div>
+                <ul class="tenants-and-tenants-emergency-ontacts" style="list-style: none;">
+                    <li>
+                        <span>借主氏名&ensp;<input type="text" id="tenant_name" style="width: 400px"
+                                readonly />&emsp;</span>&emsp;年齢&ensp;<input type="text" id="tenant_age"
+                            style="width: 30px" readonly />&ensp;歳&ensp;
+                    </li>
+
+                    <li>
+                        <span>入居者名&thinsp;1&ensp;<input type="text" id="resident_name_1" style="width: 100px"
+                                readonly />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_1"
+                            style="width: 30px" readonly />&ensp;
+                    </li>
+
+                    <li>
+                        <span>入居者名&thinsp;2&ensp;<input type="text" id="resident_name_2" style="width: 100px"
+                                readonly />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_2"
+                            style="width: 30px" readonly />&ensp;
+                    </li>
+
+                    <li>
+                        <span>入居者名&thinsp;3&ensp;<input type="text" id="resident_name_3" style="width: 100px"
+                                readonly />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_3"
+                            style="width: 30px" readonly />&ensp;
+                    </li>
+
+                    <li>
+                        <span>入居者名&thinsp;4&ensp;<input type="text" id="resident_name_4" style="width: 100px"
+                                readonly />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_4"
+                            style="width: 30px" readonly />&ensp;
+                    </li>
+
+                    <li>
+                        <span>入居者名&thinsp;5&ensp;<input type="text" id="resident_name_5" style="width: 100px"
+                                readonly />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_5"
+                            style="width: 30px" readonly />&ensp;
+                    </li>
+
+                    <li>
+                        <span>入居者名&thinsp;6&ensp;<input type="text" id="resident_name_6" style="width: 100px"
+                                readonly />&emsp;</span>年齢&ensp;<input type="text" id="resident_age_6"
+                            style="width: 30px" readonly />&ensp;
+                    </li>
+
+                    <li>
+                        <span>緊急連絡先</span>&emsp;
+                        <p>氏名&ensp;<input type="text" id="emergency_contact_name" style="width: 130px"
+                                readonly />&emsp;借主との関係&ensp;<input type="text"
+                                id="emergency_contact_relationship_with_borrowers" style="width: 130px"
+                                readonly />&ensp;
+                            <br>
+
+                            住所&ensp;<input type="text" id="emergency_contact_address" style="width: 280px"
+                                readonly />&emsp;電話
+                            &ensp;<input type="text" id="emergency_contact_address_phone" style="width: 180px"
+                                readonly />&ensp;
+
+                            <br>
+
+                            勤務先&ensp;<input type="text" id="emergency_contact_workplace" style="width: 280px"
+                                readonly />&emsp;電話
+                            &ensp;<input type="text" id="emergency_contact_workplace_work_phone" style="width: 180px"
+                                readonly />&ensp;
+
+                            <br>
+
+                            携帯&ensp;<input type="text" id="emergency_contact_mobile_number" style="width: 180px"
+                                readonly />&emsp;
+
+                        </p>
+                    </li>
+                </ul>
+
+                <ul style="list-style: none;">
+                    <li>
+                        <span>下記貸主と借主は、本物件について賃貸借契約を締結し、また貸主と連帯保証人は、借主の<br>
+
+                            債務について連帯保証契約を締結したことを証するため、本契約書3通を作成し、貸主、借主、<br>
+
+                            および連帯保証人署（記）名押印の上、各自その1通を保有します。<br>
+
+                        </span>
+                    </li>
+                </ul>
+
+                <ul style="list-style: none;">
+                    <li>
+                        <input type="date" id="joint_guarantee_contract_date" disabled>
+                    </li>
+
+                    <li class="joint-guarantor">
+                        <span>貸主</span>&emsp;
+                        <p>住所&ensp;<input type="text" id="landlord_address_2" style="width: 330px" readonly />&emsp;
+
+                            <br>
+                            氏名&ensp;<input type="text" id="landlord_name_2" style="width: 110px"
+                                readonly />&emsp;電話番号&ensp;<input type="text" id="landlord_phone_2" style="width: 124px"
+                                readonly />&ensp;
+
+                        </p>
+                    </li>
+                    <li class="joint-guarantor">
+                        <span>借主</span>&emsp;
+                        <p>住所&ensp;<input type="text" id="tenant_address" style="width: 330px" readonly />&emsp;
+
+                            <br>
+                            氏名&ensp;<input type="text" id="tenant_name_2" style="width: 110px"
+                                readonly />&emsp;電話番号&ensp;<input type="text" id="tenant_phone" style="width: 124px"
+                                readonly />&ensp;
+                        </p>
+                    </li>
+
+                    <li class="joint-guarantor">
+                        <span>連帯保証人</span>&emsp;
+                        <p>住所&ensp;<input type="text" id="joint_guarantor_address" style="width: 330px"
+                                readonly />&emsp;
+
+                            <br>
+                            氏名&ensp;<input type="text" id="joint_guarantor_name" style="width: 110px"
+                                readonly />&emsp;電話番号&ensp;<input type="text" id="joint_guarantor_phone"
+                                style="width: 124px" readonly />&ensp;
+                        </p>
+                    </li>
+
+                    極度額&ensp;<input type="text" id="maximum_amount_2" style="width: 133px"
+                        readonly />&thinsp;円&emsp;※連帯保証人が法人の場合には極度額は定めません
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
